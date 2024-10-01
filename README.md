@@ -1,6 +1,7 @@
 # med-safety-bench
 
-This repository contains the ```MedSafetyBench``` benchmark dataset from the paper [Towards Safe Large Language Models for Medicine](https://arxiv.org/abs/2403.03744). This benchmark dataset consists of harmful medical requests and medical safety demonstrations and is designed to evaluate and improve the medical safety of large language models.
+This repository contains the ```MedSafetyBench``` benchmark dataset from the paper [MedSafetyBench: Evaluating and Improving the
+Medical Safety of Large Language Models](https://arxiv.org/abs/2403.03744). This benchmark dataset consists of harmful medical requests and medical safety demonstrations and is designed to evaluate and improve the medical safety of large language models.
 
 **Note**: This dataset contains content that may be used for harmful purposes. It should be used for research only. By using this dataset, you agree to use it for research only.
 
@@ -14,7 +15,7 @@ This repository contains the ```MedSafetyBench``` benchmark dataset from the pap
 - ```datasets/training/med_safety/ft_safety_med_n900.json```
 - Other files in the folder are subsets of the above
 
-900 general safety demonstrations
+900 general safety demonstrations (from [Bianchi et al. (2023)](https://arxiv.org/abs/2309.07875))
 - ```datasets/training/gen_safety/ft_safety_gen_n900.json```
 - Other files in the folder are subsets of the above
 
