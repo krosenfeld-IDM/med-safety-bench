@@ -1,0 +1,6 @@
+[submodule "eval_med_performance"]
+	path = eval_med_performance
+	url = https://github.com/th789/meditron
+[submodule "meditron"]
+	path = meditron
+	url = https://github.com/th789/meditron
