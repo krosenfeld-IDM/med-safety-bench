@@ -40,7 +40,7 @@ The dataset consists of:
 - Fine-tune medical LLMs using demonstrations of medical safety, general safety, or both (```training/finetuning.py```)
   - Medical safety: 900 demonstrations from MedSafetyBench training set (```datasets/train-splits-used-for-ft/med_safety/ft_safety_med_n900.json```)
   - General safety: 900 demonstrations from [Bianchi et al. (2023)](https://arxiv.org/abs/2309.07875) (```datasets/train-splits-used-for-ft/gen_safety/ft_safety_gen_n900.json```)
-  - Both safety: The 900x2 demonstrations pooled together (```datasets/train-splits-used-for-ft/both_safety/ft_safety_both_n1800.json```)
+  - Both safety: The 2x900 demonstrations above pooled together (```datasets/train-splits-used-for-ft/both_safety/ft_safety_both_n1800.json```)
   - Data splits used for fine-tuning: ```datasets/train-splits-used-for-ft```
 - Prompt fine-tuned medical LLMs using harmful requests (general and medical) (```exps/exp01_prompt_models.py```)
 - Evaluate responses of fine-tuned medical LLMs to harmful requests (```exps/exp02_eval_responses.py```)
@@ -50,7 +50,7 @@ The dataset consists of:
 ## Citation
 
 ```
-@article{han2024towards,
+@article{han2024medsafetybench,
   title={MedSafetyBench: Evaluating and Improving the Medical Safety of Large Language Models},
   author={Han, Tessa and Kumar, Aounon and Agarwal, Chirag and Lakkaraju, Himabindu},
   journal={NeurIPS},
