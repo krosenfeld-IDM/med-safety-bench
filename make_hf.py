@@ -1,6 +1,6 @@
 """
 script for creating test,train datasets with all 3 models
-pip install polars sciris
+pip install polars==0.19 sciris
 """
 
 from pathlib import Path
@@ -45,6 +45,8 @@ for cat in range(1,10):
     df_ = df_.with_columns(pl.lit(cat).alias('cat'))
 # clean for tokens
 df_ = df_.with_columns(pl.col('harmful_medical_request').str.replace('<|eot_id|>', ''))
+# clean with strip
+df_ = df_.with_columns(pl.col('harmful_medical_request').str.strip_chars())
 # maintain 50:50 test:train split
 df_ = df_.with_columns(pl.struct('split').map_elements(lambda s: 'train' if rng.random() < 0.5 else 'test', return_dtype=pl.String))
 df = pl.concat((df, df_))
