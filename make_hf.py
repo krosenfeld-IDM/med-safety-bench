@@ -7,6 +7,7 @@ from pathlib import Path
 import polars as pl
 import sciris as sc
 import numpy as np
+import hashlib
 rng = np.random.default_rng(seed=12345) # for reproducibility
 
 # current directory
@@ -50,6 +51,19 @@ df_ = df_.with_columns(pl.col('harmful_medical_request').str.strip_chars())
 # maintain 50:50 test:train split
 df_ = df_.with_columns(pl.struct('split').map_elements(lambda s: 'train' if rng.random() < 0.5 else 'test', return_dtype=pl.String))
 df = pl.concat((df, df_))
+# add id
+def hash_str(s: str) -> str:
+    return hashlib.md5(s.encode()).hexdigest()
+# Add the hashed 'id' column
+df = df.with_columns(
+    pl.struct(['harmful_medical_request', 'model']).map_elements(lambda s: hash_str(s['model']+':'+s['harmful_medical_request']), return_dtype=pl.String).alias("id")
+)
+assert (df['id'].n_unique() == len(df))
+
+# reorder
+cols = df.columns
+cols.remove('id')
+df = df[['id'] + cols]
 
 # writeout to test and train csv
 for split in ['test', 'train']:
